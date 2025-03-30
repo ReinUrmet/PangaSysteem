@@ -28,7 +28,7 @@ public class Konto {
         return summaKontol;
     }
 
-    //SET MEETODID
+    //GET MEETODID
 
     public int getKontoNumber() {
         return kontoNumber;
