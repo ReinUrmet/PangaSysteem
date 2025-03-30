@@ -71,36 +71,4 @@ public class Pank {
     }
 
 
-    public static void main(String[] args) {
-
-        System.out.println("Tegemist on Panga süsteemiga");
-        System.out.println("Mõnes kohas küsib parooli, programmisk vajalikud paroolid on:");
-        System.out.println("Admin -> parool1");
-
-        Pank pank = new Pank(new ArrayList<>());
-        Scanner scanner = new Scanner(System.in);
-        while(true) {
-
-            System.out.println("Kas soovid uue konto lisada? (jah/ei) ");
-            String kasSoovidKontotLisada = scanner.nextLine();
-            if(kasSoovidKontotLisada.equals("jah")){
-                pank.lisaKonto();
-            }
-            System.out.println("Kas soovid lisatud kontosid näha (jah/ei) ");
-            String kasSoovidKontodKuvada = scanner.nextLine();
-            System.out.println("Sisesta admini parool");
-            String adminiParool = scanner.nextLine();
-
-            if(kasSoovidKontotLisada.equals("jah")){
-                if (adminiParool.equals("parool1")){
-                    pank.kuvaKontod();
-                }
-                //ELSE STATEMENTID HETKEL EI TÖÖTA?????
-                else{
-                    System.out.println("Vale parool");
-                }
-            }
-        }
-    }
-
 }
