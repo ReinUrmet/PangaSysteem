@@ -14,21 +14,21 @@ public class Konto {
 
     public double võttaVälja(double väljaVõetavSumma) {
         if (väljaVõetavSumma > summaKontol) {
-            System.out.println("Kontol pole piisavalt raha! Praegune saldo: " + summaKontol);
+            System.out.println("Kontol pole piisavalt raha! Praegune saldo: " + summaKontol + "\n");
             return summaKontol;
         }
         summaKontol -= väljaVõetavSumma;
-        System.out.println("Kontole on alles jäänud: " + summaKontol);
+        System.out.println("Kontole on alles jäänud: " + summaKontol + "\n");
         return summaKontol;
     }
 
     public double sisestaKontole(double kontoleSisestada) {
         summaKontol += kontoleSisestada;
-        System.out.println("Kontol on nüüd: " + summaKontol);
+        System.out.println("Kontol on nüüd: " + summaKontol + "\n");
         return summaKontol;
     }
 
-    //SET MEETODID
+    //GET MEETODID
 
     public int getKontoNumber() {
         return kontoNumber;
