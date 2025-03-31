@@ -12,8 +12,33 @@ public class Pank {
         this.kontodeList = new ArrayList<>();
     }
 
+    /**
+     * Meetod logib kontosse sisse.
+     * @param nimi konto nimi
+     * @param parool konto parool
+     * @return tagastab konto, kuhu sisse logiti
+     */
+    public Konto logiSisse(String nimi, String parool) {
+
+        for(Konto konto: kontodeList) {
+            if(nimi.equalsIgnoreCase(konto.getKontoOmanik())) {
+                if (parool.equals(konto.getParool())) {
+                    System.out.println("Edukalt sisse logitud");
+                    return konto;
+                } else {
+                    System.out.println("Vale parool");
+                }
+            } else {
+                System.out.println("Sellist kontot ei leitud");
+            }
+        }
+
+
+        return null;
+    }
+
     //Lisa Konto meetod
-    public List<Konto> lisaKonto() {
+    public List<Konto> lisaKonto(int vanus) {
 
         //Algselt palun konto omaniku nime,
         //Impordin scanner objekti
@@ -43,8 +68,14 @@ public class Pank {
         Random random = new Random();
         int kontoNumber = random.nextInt((max - miinimum) + 1) + miinimum;
 
-        Konto uusKonto = new Konto(kontoNumber, omanikuNimi, parool1, 0.0);
-        kontodeList.add(uusKonto);
+        //Kui vanus alla 65 loome tava konto, muidu loome pensionäri konto
+        if(vanus <= 65) {
+            Konto uusKonto = new Konto(kontoNumber, omanikuNimi, parool1, 0.0);
+            kontodeList.add(uusKonto);
+        } else {
+            PensionaariKonto uusKonto = new PensionaariKonto(kontoNumber, vanus, omanikuNimi, parool1, 0.0);
+            kontodeList.add(uusKonto);
+        }
 
         return kontodeList;
     }
@@ -62,7 +93,7 @@ public class Pank {
         }
     }
 
-    public List<Konto> kontodeltKandmine(){
+    public List<Konto> getKontod(){
         return kontodeList;
     }
 
