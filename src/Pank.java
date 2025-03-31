@@ -27,13 +27,12 @@ public class Pank {
                     return konto;
                 } else {
                     System.out.println("Vale parool");
+                    return null;
                 }
-            } else {
-                System.out.println("Sellist kontot ei leitud");
             }
         }
 
-
+        System.out.println("Sellist kontot ei leitud");
         return null;
     }
 

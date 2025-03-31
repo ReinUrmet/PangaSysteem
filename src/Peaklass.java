@@ -91,7 +91,9 @@ public class Peaklass {
                     System.out.println("Sisesta konto parool");
                     String parool = scanner.nextLine();
                     Konto sisseLogitud = pank.logiSisse(kontoNimi, parool);
-                    if(sisseLogitud == null) break;
+                    if(sisseLogitud == null) {
+                        break;
+                    };
                     sisseLogitud(sisseLogitud);
                     break;
                 case "3":
