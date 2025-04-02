@@ -4,28 +4,49 @@ public class Konto {
     private String kontoOmanik;
     private String parool;
     private double summaKontol;
+    private Pank pank;
 
-    public Konto(int kontoNumber, String kontoOmanik, String parool, double summaKontol) {
+    public Konto(int kontoNumber, String kontoOmanik, String parool, double summaKontol, Pank pank) {
         this.kontoNumber = kontoNumber;
         this.kontoOmanik = kontoOmanik;
         this.parool = parool;
         this.summaKontol = summaKontol;
+        this.pank = pank;
     }
 
-    public double võttaVälja(double väljaVõetavSumma) {
+    public void võttaVälja(double väljaVõetavSumma) {
         if (väljaVõetavSumma > summaKontol) {
             System.out.println("Kontol pole piisavalt raha! Praegune saldo: " + summaKontol + "\n");
-            return summaKontol;
         }
         summaKontol -= väljaVõetavSumma;
         System.out.println("Kontole on alles jäänud: " + summaKontol + "\n");
-        return summaKontol;
     }
 
-    public double sisestaKontole(double kontoleSisestada) {
+    public void sisestaKontole(double kontoleSisestada) {
         summaKontol += kontoleSisestada;
-        System.out.println("Kontol on nüüd: " + summaKontol + "\n");
-        return summaKontol;
+    }
+
+    public void kannaKontole(double summa, int kontoNumber) {
+        if(summa > summaKontol) {
+            System.out.println("Kontol pole piisavalt raha");
+            return;
+        };
+
+        pank.lisaRahaKontole(summa, kontoNumber);
+
+        summaKontol -= summa;
+        System.out.println("Raha edukalt kantud.");
+        System.out.println("Teil on nüüd kontol: " + summaKontol);
+        System.out.println();
+        System.out.println();
+    }
+
+    public void lahutaKontolt(double summa) {
+        summaKontol -= summa;
+    }
+
+    public void setPank(Pank pank) {
+        this.pank = pank;
     }
 
     //GET MEETODID
@@ -40,6 +61,10 @@ public class Konto {
 
     public String getParool() {
         return parool;
+    }
+
+    public Pank getPank() {
+        return pank;
     }
 
     public double getSummaKontol() {

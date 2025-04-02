@@ -67,12 +67,15 @@ public class Pank {
         Random random = new Random();
         int kontoNumber = random.nextInt((max - miinimum) + 1) + miinimum;
 
-        //Kui vanus alla 65 loome tava konto, muidu loome pensionäri konto
-        if(vanus <= 65) {
-            Konto uusKonto = new Konto(kontoNumber, omanikuNimi, parool1, 0.0);
+        //Kui vanus väiksem, kui 18 loome noorukikonto, kui vanus alla 65 loome tava konto, muidu loome pensionäri konto
+        if (vanus < 18) {
+            Noorukikonto uusKonto = new Noorukikonto(kontoNumber, vanus, omanikuNimi, parool1, 0.0, null);
+            kontodeList.add(uusKonto);
+        } else if(vanus <= 65) {
+            Konto uusKonto = new Konto(kontoNumber, omanikuNimi, parool1, 0.0, null);
             kontodeList.add(uusKonto);
         } else {
-            PensionaariKonto uusKonto = new PensionaariKonto(kontoNumber, vanus, omanikuNimi, parool1, 0.0);
+            PensionaariKonto uusKonto = new PensionaariKonto(kontoNumber, vanus, omanikuNimi, parool1, 0.0, null);
             kontodeList.add(uusKonto);
         }
 
@@ -94,6 +97,21 @@ public class Pank {
 
     public List<Konto> getKontod(){
         return kontodeList;
+    }
+
+    public void lisaRahaKontole(double summa, int kontoNumber) {
+        boolean kasLeitiKonto = false;
+        for(Konto vaadeldav : kontodeList){
+            if(vaadeldav.getKontoNumber() == kontoNumber) {
+                kasLeitiKonto = true;
+                vaadeldav.sisestaKontole(summa);
+            }
+        }
+
+        if(!kasLeitiKonto) {
+            System.out.println("Kontot sisestatud kontonumbriga ei leitud");
+        }
+
     }
 
     public String unustasinParooli(){
