@@ -19,7 +19,8 @@ public class Peaklass {
             System.out.println("Sisestage number, mida soovite  teha: ");
             System.out.println("1- kontolt raha välja võtta");
             System.out.println("2- kontole raha sisestada");
-            System.out.println("3- välja logida");
+            System.out.println("3- kanda raha teisele kontole");
+            System.out.println("4- välja logida");
             String järgmineTegevus = sc.nextLine();
 
             if (järgmineTegevus.equals("1")) {
@@ -30,11 +31,19 @@ public class Peaklass {
                 System.out.println("Palju te tahate sisestada");
                 double sisestatavSumma = Double.parseDouble(sc.nextLine());
                 sisseLogitud.sisestaKontole(sisestatavSumma);
+                System.out.println("Kontol on nüüd: " + sisseLogitud.getSummaKontol());
             } else if (järgmineTegevus.equals("3")) {
+                System.out.println("Palju te raha tahate kanda");
+                double kantavRaha = Double.parseDouble(sc.nextLine());
+                System.out.println("Sisestage kontoNumber, kuhu tahate kanda");
+                int kontoNumber = Integer.parseInt(sc.nextLine());
+                sisseLogitud.kannaKontole(kantavRaha, kontoNumber);
+            }
+            else if (järgmineTegevus.equals("4")) {
                 System.out.println("Olete välja logitud" + "\n \n \n \n \n");
                 break;
             } else {
-                System.out.println("Sisetage arv 1,2 või 3");
+                System.out.println("Sisetage arv 1,2, 3, 4");
             }
         }
     }
@@ -84,6 +93,9 @@ public class Peaklass {
                     System.out.println("Mis on teie vanus?");
                     int vanus = Integer.parseInt(scanner.nextLine());
                     pank.lisaKonto(vanus);
+                    for(Konto konto: pank.getKontod()) {
+                        if(konto.getPank() == null) konto.setPank(pank);
+                    }
                     continue;
                 case "2":
                     System.out.println("Sisesta konto nimi: ");
