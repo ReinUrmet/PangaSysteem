@@ -26,6 +26,12 @@ public class Konto {
         summaKontol += kontoleSisestada;
     }
 
+    /**
+     * meetod kannab raha sellelt kontolt teisele
+     * @param summa kantav summa
+     * @param kontoNumber kontoNr, kuhu summa kantakse
+     */
+
     public void kannaKontole(double summa, int kontoNumber) {
         if(summa > summaKontol) {
             System.out.println("Kontol pole piisavalt raha");
@@ -40,6 +46,11 @@ public class Konto {
         System.out.println();
         System.out.println();
     }
+
+    /**
+     * meetodiga saab kontolt lahutada summa
+     * @param summa lahutatav summa
+     */
 
     public void lahutaKontolt(double summa) {
         summaKontol -= summa;

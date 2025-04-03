@@ -7,6 +7,12 @@ public class Noorukikonto extends Konto{
         this.vanus = vanus;
     }
 
+
+    /**
+     * meetod kannab raha sellelt kontolt teisele
+     * @param summa kantav summa
+     * @param kontoNumber kontoNr, kuhu summa kantakse
+     */
     @Override
     public void kannaKontole(double summa, int kontoNumber) {
         if(summa > super.getSummaKontol()) {

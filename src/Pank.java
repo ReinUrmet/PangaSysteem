@@ -82,6 +82,10 @@ public class Pank {
         return kontodeList;
     }
 
+    /**
+     * Meetod kuvab ekraanile kõik hetkel tehtud kontod.
+     */
+
     public void kuvaKontod(){
         //SEE IF STATEMENT EI TÖÖTA????
         if (kontodeList.isEmpty()) {
@@ -99,6 +103,11 @@ public class Pank {
         return kontodeList;
     }
 
+    /**
+     * meetodiga saab lisada raha mingile kindlale kontole pangas.
+     * @param summa lisatav summa
+     * @param kontoNumber kontonumber, kuhu summa lisatakse
+     */
     public void lisaRahaKontole(double summa, int kontoNumber) {
         boolean kasLeitiKonto = false;
         for(Konto vaadeldav : kontodeList){
